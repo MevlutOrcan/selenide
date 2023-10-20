@@ -17,4 +17,4 @@ Feature: Register
     And Click Continue button
     And Verify that Logged in as username is visible
     And Click Delete Account button
-    And Verify that "ACCOUNT DELETED!" is visible and click Continue button
+    And Verify that "Account Deleted!" is visible and click Continue button

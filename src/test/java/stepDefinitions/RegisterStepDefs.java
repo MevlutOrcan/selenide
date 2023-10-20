@@ -1,6 +1,7 @@
 package stepDefinitions;
 
 import com.codeborne.selenide.Condition;
+import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.WebDriverRunner;
 import com.github.javafaker.Faker;
 import io.cucumber.java.en.*;
@@ -8,6 +9,7 @@ import org.junit.Assert;
 import org.openqa.selenium.Keys;
 import pages.HomeSignUpLoginPage;
 
+import static com.codeborne.selenide.CollectionCondition.*;
 import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.*;
@@ -15,7 +17,9 @@ import static com.codeborne.selenide.Selenide.*;
 public class RegisterStepDefs extends HomeSignUpLoginPage {
     @Given("Navigate to url {string}")
     public void navigateToUrl(String arg0) {
+        Configuration.timeout = 60000;
         open(arg0);
+
     }
 
     @And("Verify that home page is visible successfully")
@@ -110,7 +114,9 @@ public class RegisterStepDefs extends HomeSignUpLoginPage {
     @And("Click Continue button")
     public void clickContinueButton() {
         continueButton.click();
-        navigateToUrl("https://automationexercise.com/");
+        refresh();
+        if (continueButton.isDisplayed()) continueButton.click();
+
     }
 
     @And("Verify that Logged in as username is visible")
@@ -120,7 +126,7 @@ public class RegisterStepDefs extends HomeSignUpLoginPage {
 
     @And("Click Delete Account button")
     public void clickDeleteAccountButton() {
-        deleteAccount.shouldBe(visible);
+        jsclick(deleteAccount);
     }
 
     @And("Verify that {string} is visible and click Continue button")

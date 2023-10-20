@@ -35,9 +35,9 @@ public class HomeSignUpLoginPage extends ReusableMethods {
     public SelenideElement createAccountButton = $("[data-qa=\"create-account\"]");
     public SelenideElement accountCreatedText = $(By.xpath("//b[.='Account Created!']"));
     public SelenideElement continueButton = $("[class=\"pull-right\"] [data-qa=\"continue-button\"]");
-    public SelenideElement closeButton = $(By.xpath("//span[.='Close']"));
     public SelenideElement loggedIn = $(By.xpath("//*[text()=' Logged in as ']"));
     public SelenideElement deleteAccount = $("a[href=\"/delete_account\"]");
+    public List<SelenideElement> closeButton = $$(By.xpath("//*[.='Close']"));
 
 
 }
