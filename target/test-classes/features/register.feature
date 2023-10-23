@@ -1,7 +1,9 @@
-Feature: Register
 @register
+Feature: Register
+
+  @registerAndDelete
   Scenario: Register
-    Given Navigate to url "http://automationexercise.com"
+    Given Navigate to url "/"
     And Verify that home page is visible successfully
     And Click on Signup Login button
     And Verify text "New User Signup!" is visible
@@ -18,3 +20,14 @@ Feature: Register
     And Verify that Logged in as username is visible
     And Click Delete Account button
     And Verify that "Account Deleted!" is visible and click Continue button
+
+  @registerWithExistingEmail
+  Scenario: Register User with existing email
+    Given Navigate to url "/"
+    And Verify that home page is visible successfully
+    And Click on Signup Login button
+    And Verify text "New User Signup!" is visible
+    And Enter name and already registered email address
+    And Click Signup button
+    And Verify text "Email Address already exist!" is visible
+#    And Verify error 'Email Address already exist!' is visible

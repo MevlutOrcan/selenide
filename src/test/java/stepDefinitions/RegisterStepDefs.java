@@ -8,6 +8,7 @@ import io.cucumber.java.en.*;
 import org.junit.Assert;
 import org.openqa.selenium.Keys;
 import pages.HomeSignUpLoginPage;
+import utils.ConfigReader;
 
 import static com.codeborne.selenide.CollectionCondition.*;
 import static com.codeborne.selenide.Condition.*;
@@ -16,9 +17,10 @@ import static com.codeborne.selenide.Selenide.*;
 
 public class RegisterStepDefs extends HomeSignUpLoginPage {
     @Given("Navigate to url {string}")
-    public void navigateToUrl(String arg0) {
+    public void navigateToUrl(String endPoint) {
         Configuration.timeout = 60000;
-        open(arg0);
+        Configuration.browserSize = "max";
+        open(ConfigReader.getProperty("URL")+endPoint);
 
     }
 
@@ -133,5 +135,12 @@ public class RegisterStepDefs extends HomeSignUpLoginPage {
     public void verifyThatIsVisibleAndClickContinueButton(String arg0) {
         Assert.assertTrue(WebDriverRunner.source().contains(arg0));
         continueButton.click();
+    }
+
+    @And("Enter name and already registered email address")
+    public void enterNameAndAlreadyRegisteredEmailAddress() {
+        faker = new Faker();
+        name.setValue(faker.name().fullName());
+        signupEmailBox.setValue(ConfigReader.getProperty("existingEmail"));
     }
 }
