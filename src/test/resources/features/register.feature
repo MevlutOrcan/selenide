@@ -2,7 +2,7 @@
 Feature: Register
 
   @registerAndDelete
-  Scenario: Register
+  Scenario: TC01 Register
     Given Navigate to url "/"
     And Verify that home page is visible successfully
     And Click on Signup Login button
@@ -22,7 +22,7 @@ Feature: Register
     And Verify that "Account Deleted!" is visible and click Continue button
 
   @registerWithExistingEmail
-  Scenario: Register User with existing email
+  Scenario: TC05 Register User with existing email
     Given Navigate to url "/"
     And Verify that home page is visible successfully
     And Click on Signup Login button

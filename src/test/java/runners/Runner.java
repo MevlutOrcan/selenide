@@ -11,9 +11,8 @@ import org.junit.runner.RunWith;
                 "html:target/cucumber-reports.html"
         },
         features = "src/test/resources/features",
-        glue = {"stepDefinitions", "hooks"},
-
-        tags = "@registerWithExistingEmail" ,
+        glue = {"stepDefinitions"},
+        tags = "@logout" ,
         dryRun = false
 
 

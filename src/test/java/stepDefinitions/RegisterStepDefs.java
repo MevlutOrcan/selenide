@@ -2,6 +2,7 @@ package stepDefinitions;
 
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.Configuration;
+import com.codeborne.selenide.Configuration.*;
 import com.codeborne.selenide.WebDriverRunner;
 import com.github.javafaker.Faker;
 import io.cucumber.java.en.*;
@@ -19,9 +20,8 @@ public class RegisterStepDefs extends HomeSignUpLoginPage {
     @Given("Navigate to url {string}")
     public void navigateToUrl(String endPoint) {
         Configuration.timeout = 60000;
-        Configuration.browserSize = "max";
-        open(ConfigReader.getProperty("URL")+endPoint);
-
+        open(ConfigReader.getProperty("URL") + endPoint);
+        WebDriverRunner.getWebDriver().manage().window().maximize();
     }
 
     @And("Verify that home page is visible successfully")
@@ -129,6 +129,7 @@ public class RegisterStepDefs extends HomeSignUpLoginPage {
     @And("Click Delete Account button")
     public void clickDeleteAccountButton() {
         jsclick(deleteAccount);
+
     }
 
     @And("Verify that {string} is visible and click Continue button")
@@ -141,6 +142,33 @@ public class RegisterStepDefs extends HomeSignUpLoginPage {
     public void enterNameAndAlreadyRegisteredEmailAddress() {
         faker = new Faker();
         name.setValue(faker.name().fullName());
-        signupEmailBox.setValue(ConfigReader.getProperty("existingEmail"));
+        signupEmailBox.setValue(ConfigReader.getProperty("email"));
+    }
+
+    @And("Enter correct email address and password")
+    public void enterCorrectEmailAddressAndPassword() {
+        loginEmailBox.setValue(ConfigReader.getProperty("email"));
+        passwordLogin.setValue(ConfigReader.getProperty("password"));
+    }
+
+    @And("Click Login button")
+    public void clickLoginButton() {
+        loginButton.click();
+    }
+
+    @And("Enter incorrect email address and password")
+    public void enterIncorrectEmailAddressAndPassword() {
+        loginEmailBox.setValue(ConfigReader.getProperty("incorrectEmail"));
+        passwordLogin.setValue(ConfigReader.getProperty("incorrectPassword"));
+    }
+
+    @And("Click Logout button")
+    public void clickLogoutButton() {
+        logoutButton.click();
+    }
+
+    @And("Verify that user is navigated to login page")
+    public void verifyThatUserIsNavigatedToLoginPage() {
+        signupLogin.shouldHave(visible);
     }
 }
