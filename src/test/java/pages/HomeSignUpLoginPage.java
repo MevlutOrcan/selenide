@@ -41,6 +41,15 @@ public class HomeSignUpLoginPage extends ReusableMethods {
     public SelenideElement passwordLogin = $("[data-qa=\"login-password\"]");
     public SelenideElement loginButton = $("[data-qa=\"login-button\"]");
     public SelenideElement logoutButton = $("[href=\"/logout\"]");
+    public SelenideElement contactUsButton = $("[href=\"/contact_us\"]");
+    public SelenideElement contactUsEmail = $("[name=\"email\"]");
+    public SelenideElement subject = $("[name=\"subject\"]");
+    public SelenideElement message = $("[id=\"message\"]");
+    public SelenideElement chooseFile = $("[name=\"upload_file\"]");
+    public SelenideElement submitButton = $("[name=\"submit\"]");
+    public SelenideElement homeButton = $("[class=\"btn btn-success\"] [class=\"fa fa-angle-double-left\"]");
+    public SelenideElement xCloseButton = $("[class=\"ns-dpaeu-e-7\"],[viewBox=\"0 0 48 48\"],[d=\"M38 12.83L35.17 10 24 21.17 12.83 10 10 12.83 21.17 24 10 35.17 12.83 38 24 26.83 35.17 38 38 35.17 26.83 24z\"]");
+
 
 
 }

@@ -1,6 +1,5 @@
 package stepDefinitions;
 
-import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.Configuration.*;
 import com.codeborne.selenide.WebDriverRunner;
@@ -170,5 +169,49 @@ public class RegisterStepDefs extends HomeSignUpLoginPage {
     @And("Verify that user is navigated to login page")
     public void verifyThatUserIsNavigatedToLoginPage() {
         signupLogin.shouldHave(visible);
+    }
+
+    @And("Click text on {string} button")
+    public void clickTextOnButton(String text) {
+        $(byText(text)).click();
+    }
+
+    @And("Click on Contact Us button")
+    public void clickOnContactUsButton() {
+        contactUsButton.click();
+    }
+
+    @And("Enter name, email, subject and message")
+    public void enterNameEmailSubjectAndMessage() {
+        faker = new Faker();
+        contactUsEmail.setValue(faker.internet().emailAddress());
+        name.setValue(faker.name().fullName());
+        subject.setValue(faker.shakespeare().asYouLikeItQuote());
+        message.setValue(faker.leagueOfLegends().masteries());
+    }
+
+    @And("Upload file")
+    public void uploadFile() {
+//        String relativeFilePath = System.getProperty("user.dir") + "/src/main/resources/Adsızaa.png";
+//        chooseFile.uploadFromClasspath(relativeFilePath);
+
+    }
+
+    @And("Click OK button")
+    public void clickOKButton() {
+        switchTo().alert().accept();
+    }
+
+
+    @And("Click Submit button")
+    public void clickSubmitButton() {
+        jsclick(submitButton);
+    }
+
+    @And("Click Home button and verify that landed to home page successfully")
+    public void clickHomeButtonAndVerifyThatLandedToHomePageSuccessfully() {
+
+        homeButton.click();
+//        verifyThatHomePageIsVisibleSuccessfully();
     }
 }
