@@ -11,4 +11,4 @@ Feature: Contact Us Form
     And Click Submit button
     And Click OK button
     And Verify text "Success! Your details have been submitted successfully." is visible
-#    And Click Home button and verify that landed to home page successfully
+    And Click Home button and verify that landed to home page successfully

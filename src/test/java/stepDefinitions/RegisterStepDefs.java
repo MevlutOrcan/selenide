@@ -21,6 +21,7 @@ public class RegisterStepDefs extends HomeSignUpLoginPage {
         Configuration.timeout = 60000;
         open(ConfigReader.getProperty("URL") + endPoint);
         WebDriverRunner.getWebDriver().manage().window().maximize();
+        skipAdvertise();
     }
 
     @And("Verify that home page is visible successfully")
@@ -213,5 +214,32 @@ public class RegisterStepDefs extends HomeSignUpLoginPage {
 
         homeButton.click();
 //        verifyThatHomePageIsVisibleSuccessfully();
+    }
+
+    @And("Click on Test Cases button")
+    public void clickOnTestCasesButton() {
+        testCasesButton.click();
+        skipAdvertise();
+    }
+
+    @And("Verify user is navigated to test cases page successfully")
+    public void verifyUserIsNavigatedToTestCasesPageSuccessfully() {
+        testCasesHeader.shouldHave(visible);
+    }
+
+    @And("Keep open browser")
+    public void keepOpenBrowser() {
+        Configuration.holdBrowserOpen = true;
+    }
+
+    @And("Skip advertise")
+    public void skipAdvertise() {
+//        switchTo().frame("ad_iframe");
+//        if (advertiseClose.isDisplayed()) {
+//            advertiseClose.click();
+//            switchTo().parentFrame();
+//        }
+
+
     }
 }
