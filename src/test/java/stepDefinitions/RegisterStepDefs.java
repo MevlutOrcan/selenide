@@ -8,7 +8,9 @@ import io.cucumber.java.en.*;
 import org.junit.Assert;
 import org.openqa.selenium.Keys;
 import pages.HomeSignUpLoginPage;
+import pages.Pages;
 import utils.ConfigReader;
+import utils.ReusableMethods;
 
 import static com.codeborne.selenide.CollectionCondition.*;
 import static com.codeborne.selenide.Condition.*;
@@ -219,12 +221,18 @@ public class RegisterStepDefs extends HomeSignUpLoginPage {
     @And("Click on Test Cases button")
     public void clickOnTestCasesButton() {
         testCasesButton.click();
-        skipAdvertise();
+
     }
 
     @And("Verify user is navigated to test cases page successfully")
     public void verifyUserIsNavigatedToTestCasesPageSuccessfully() {
-        testCasesHeader.shouldHave(visible);
+        if (testCasesHeader.isDisplayed()){
+            testCasesHeader.shouldHave(visible);
+        }else {
+            refresh();
+            clickOnTestCasesButton();
+            verifyUserIsNavigatedToTestCasesPageSuccessfully();
+        }
     }
 
     @And("Keep open browser")

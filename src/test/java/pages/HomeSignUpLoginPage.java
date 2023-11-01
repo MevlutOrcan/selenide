@@ -8,7 +8,7 @@ import java.util.List;
 
 import static com.codeborne.selenide.Selenide.*;
 
-public class HomeSignUpLoginPage extends ReusableMethods {
+public class HomeSignUpLoginPage extends Pages {
     public List<SelenideElement> homePageImages = $$("[class=\"girl img-responsive\"]");
     public SelenideElement signupLogin = $("[href=\"/login\"]");
     public SelenideElement name = $("[name=\"name\"]");
