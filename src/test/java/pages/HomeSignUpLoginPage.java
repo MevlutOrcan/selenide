@@ -52,6 +52,9 @@ public class HomeSignUpLoginPage extends Pages {
     public SelenideElement testCasesButton = $("[href=\"/test_cases\"]");
     public SelenideElement testCasesHeader = $(By.xpath("//*[@id=\"form\"]/div/div[1]/div/h2/b[text()='Test Cases']"));
     public SelenideElement advertiseClose = $(By.xpath("//*[@class=\"ns-i0sza-e-7\"][.='Close']"));
+    public SelenideElement subscriptionTextBox = $("[id=\"susbscribe_email\"]");
+    public SelenideElement arrowButton = $("[id=\"subscribe\"]");
+    public SelenideElement subscriptionText = $("[class=\"single-widget\"] h2");
 
 
 

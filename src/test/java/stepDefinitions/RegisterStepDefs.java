@@ -226,9 +226,9 @@ public class RegisterStepDefs extends HomeSignUpLoginPage {
 
     @And("Verify user is navigated to test cases page successfully")
     public void verifyUserIsNavigatedToTestCasesPageSuccessfully() {
-        if (testCasesHeader.isDisplayed()){
+        if (testCasesHeader.isDisplayed()) {
             testCasesHeader.shouldHave(visible);
-        }else {
+        } else {
             refresh();
             clickOnTestCasesButton();
             verifyUserIsNavigatedToTestCasesPageSuccessfully();
@@ -249,5 +249,22 @@ public class RegisterStepDefs extends HomeSignUpLoginPage {
 //        }
 
 
+    }
+
+    @And("Scroll down to footer")
+    public void scrollDownToFooter() {
+        subscriptionText.scrollTo();
+    }
+
+    @And("Enter email address in input and click arrow button")
+    public void enterEmailAddressInInputAndClickArrowButton() {
+        subscriptionTextBox.click();
+        subscriptionTextBox.setValue(faker.internet().emailAddress());
+        arrowButton.click();
+    }
+
+    @And("Verify text SUBSCRIPTION")
+    public void verifyTextSUBSCRIPTION() {
+        subscriptionText.shouldHave(text("Subscription"));
     }
 }
